@@ -146,6 +146,8 @@ header h1 {
   gap: 1ch;
   font-size: 0.8rem;
   color: rgba(237, 231, 217, 0.5);
+}
+.information-section .word-information-wrapper .enable-help-wrapper label:hover {
   cursor: pointer;
 }
 .information-section .word-information-wrapper .word-definition {
@@ -180,8 +182,8 @@ header h1 {
   font-size: 0.8rem;
 }
 .checkbox-container input {
-  width: 1em;
-  height: 1em;
+  width: 0;
+  height: 0;
   position: absolute;
   opacity: 0;
 }
