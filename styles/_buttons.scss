@@ -75,7 +75,7 @@
     }
 
     &:active {
-        background-color: colors.$second-medium;
+        background-color: $second-color;
         border-bottom: 3px solid $main-color;
     }
 }
