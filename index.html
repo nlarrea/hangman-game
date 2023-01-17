@@ -48,20 +48,23 @@
                 <div class="guess-word">
                     <h3>Will you guess the word?</h3>
 
-                    <div class="display-word-wrapper">
+                    <div class="display-word-wrapper not-playing">
                         <!-- inside ob this I have to display de _ _ _ of the unknown word -->
                     </div>
                 </div>
 
-                <div class="controls">
-                    <button id="start-game">
-                        <span>Start Game!</span>
-                    </button>
-                </div>
-
-                <div class="player-input-wrapper">
+                <div class="player-input-wrapper not-playing" id="player-input">
                     <input type="text" id="player-input" placeholder="Click to enter one letter">
                     <label>Enter one letter:</label>
+                </div>
+
+                <div class="controls">
+                    <button class="not-playing" id="start-game">
+                        <span>Start Game!</span>
+                    </button>
+                    <button class="not-playing" id="back-game">
+                        <span>Go Back</span>
+                    </button>
                 </div>
             </div>
         </section>

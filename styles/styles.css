@@ -203,15 +203,24 @@ header h1 {
   justify-content: center;
   align-items: center;
 }
-.playing-section .controls.playing {
-  display: none;
-}
 .playing-section .controls {
   width: 100%;
   height: 25%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+.playing-section .controls #start-game.playing {
+  display: none;
+}
+.playing-section .controls #start-game.not-playing {
+  display: block;
+}
+.playing-section .controls #back-game.not-playing {
+  display: none;
+}
+.playing-section .controls #back-game.playing {
+  display: block;
 }
 .playing-section .player-input-wrapper {
   display: none;
@@ -322,6 +331,13 @@ header h1 {
   position: relative;
   transition: 0.5s;
 }
+#start-game:hover span:after, #start-game:focus span:after, #start-game:hover span:before, #start-game:focus span:before {
+  opacity: 1;
+}
+#start-game:active {
+  background-color: #606060;
+  border-bottom: 3px solid #606060;
+}
 #start-game span:after {
   content: " >>";
   font-family: inherit;
@@ -336,10 +352,42 @@ header h1 {
 #start-game:hover span, #start-game:focus span {
   padding-right: 3ch;
 }
-#start-game:hover span:after, #start-game:focus span:after {
+
+#back-game {
+  width: 60%;
+  height: auto;
+  padding: 1em;
+  cursor: pointer;
+  font-weight: 700;
+  color: #ede7d9;
+  background-color: #1b1b1b;
+  border-radius: 5px;
+  border: none;
+  border-bottom: 3px solid #606060;
+}
+#back-game span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#back-game:hover span:after, #back-game:focus span:after, #back-game:hover span:before, #back-game:focus span:before {
   opacity: 1;
 }
-#start-game:active {
-  background-color: #1b1b1b;
-  border-bottom: 3px solid #606060;
+#back-game:active {
+  background-color: #606060;
+  border-bottom: 3px solid #1b1b1b;
+}
+#back-game span:before {
+  content: "<<";
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  line-height: inherit;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#back-game:hover span, #back-game:focus span {
+  padding-left: 3ch;
 }/*# sourceMappingURL=styles.css.map */
