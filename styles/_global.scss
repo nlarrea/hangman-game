@@ -7,7 +7,7 @@
     padding: 2em;
 
     background-color: colors.$main-dark;
-    border: 1px solid rgba($color: colors.$second-medium, $alpha: 0.3);
+    border: 1px solid rgba($color: colors.$second-medium, $alpha: 0.4);
     border-radius: 15px;
 
     color: colors.$main-light;
@@ -51,12 +51,12 @@ body {
     place-items: center;
     gap: 1em;
 
-    background-color: rgba($color: colors.$main-dark, $alpha: 0.9);
+    background-color: rgba($color: colors.$main-dark, $alpha: 0.7);
     border-radius: 30px;
 }
 
 header {
-    color: colors.$second-medium;
+    color: rgba(colors.$main-light, 0.6);
 
     div {
         position: relative;
@@ -191,6 +191,7 @@ header {
 
             background-color: colors.$second-dark;
             border-radius: 5px;
+            border: 1px solid colors.$higlight-dark;
             
             overflow: hidden;
             overflow-y: auto;
