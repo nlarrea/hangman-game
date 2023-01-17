@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
@@ -44,11 +45,21 @@
             </div>
             
             <div class="playing-section">       <!-- respuesta del jugador -->
-                <div class="guess-word">Will you guess the word?</div>
+                <div class="guess-word">
+                    <h3>Will you guess the word?</h3>
+
+                    <div class="display-word-wrapper">
+                        <!-- inside ob this I have to display de _ _ _ of the unknown word -->
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button>Start Game!</button>
+                </div>
 
                 <div class="player-input-wrapper">
-                    <label for="player-input">Enter a letter:</label>
-                    <input type="text" id="player-input" placeholder="Example: a">
+                    <input type="text" id="player-input" placeholder="Click to enter one letter">
+                    <label>Enter one letter:</label>
                 </div>
             </div>
         </section>

@@ -1,5 +1,6 @@
 @use "colors";
 
+/* CHECKBOX */
 .checkbox-container {
     width: 1em;
     height: 1em;
@@ -46,3 +47,5 @@
 .checkbox-container input:checked ~ .checkmark:after {
     transform: scale(1);
 }
+
+/* START-GAME BUTTON */
