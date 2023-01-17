@@ -144,12 +144,14 @@ header {
                 @include positionElements($column: 1, $row: 3);
                 width: 20px;
                 margin: 0 0 0 auto;
+                transform: translateX(20px);
             }
 
             #hangman-right-leg {
                 @include positionElements($column: 3, $row: 3);
                 width: 20px;
                 margin: 0 auto 0 0;
+                transform: translateX(-20px);
             }
         }
     }

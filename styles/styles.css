@@ -121,6 +121,7 @@ header h1 {
   grid-row: 3;
   width: 20px;
   margin: 0 0 0 auto;
+  transform: translateX(20px);
 }
 .information-section .hangman-img-wrapper .hangman-img #hangman-right-leg {
   width: 100%;
@@ -129,6 +130,7 @@ header h1 {
   grid-row: 3;
   width: 20px;
   margin: 0 auto 0 0;
+  transform: translateX(-20px);
 }
 .information-section .word-information-wrapper {
   width: 100%;
