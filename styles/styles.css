@@ -1,0 +1,209 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  max-width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url(./../images/glen-carrie-oHoBIbDj7lo-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  width: 90vw;
+  height: 90vh;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  place-items: center;
+  gap: 1em;
+  background-color: rgba(39, 39, 39, 0.9);
+  border-radius: 30px;
+}
+
+header {
+  color: #606060;
+}
+header div {
+  position: relative;
+}
+header span {
+  font-weight: 300;
+  position: absolute;
+  top: 8px;
+  left: 60px;
+}
+header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  text-decoration: underline;
+}
+
+.game-container {
+  width: 100%;
+  height: 100%;
+  padding: 0 3em 3em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+}
+
+.information-section {
+  width: 100%;
+  height: auto;
+  padding: 2em;
+  background-color: #272727;
+  border: 1px solid rgba(96, 96, 96, 0.3);
+  border-radius: 15px;
+  color: #ede7d9;
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  gap: 1em;
+}
+.information-section .hangman-img-wrapper {
+  width: 100%;
+  max-height: 100%;
+  padding: 0.5em;
+  display: grid;
+  place-content: center;
+}
+.information-section .hangman-img-wrapper .hangman-img {
+  display: grid;
+  grid-template-columns: 70px 50px 70px;
+  grid-template-rows: 50px 70px 70px;
+  place-content: center;
+  row-gap: 10px;
+}
+.information-section .hangman-img-wrapper .hangman-img div {
+  width: 100%;
+  height: 20px;
+  background-color: #606060;
+  border-radius: 10px;
+}
+.information-section .hangman-img-wrapper .hangman-img #hangman-head {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  grid-column: 2;
+  grid-row: 1;
+}
+.information-section .hangman-img-wrapper .hangman-img #hangman-left-arm {
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 2;
+  height: 20px;
+}
+.information-section .hangman-img-wrapper .hangman-img #hangman-body {
+  width: 100%;
+  height: 100%;
+  grid-column: 2;
+  grid-row: 2;
+  width: 20px;
+  margin: 0 auto;
+}
+.information-section .hangman-img-wrapper .hangman-img #hangman-right-arm {
+  width: 100%;
+  height: 100%;
+  grid-column: 3;
+  grid-row: 2;
+  height: 20px;
+}
+.information-section .hangman-img-wrapper .hangman-img #hangman-left-leg {
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 3;
+  width: 20px;
+  margin: 0 0 0 auto;
+}
+.information-section .hangman-img-wrapper .hangman-img #hangman-right-leg {
+  width: 100%;
+  height: 100%;
+  grid-column: 3;
+  grid-row: 3;
+  width: 20px;
+  margin: 0 auto 0 0;
+}
+.information-section .word-information-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.information-section .word-information-wrapper .enable-help-wrapper {
+  width: 100%;
+  height: auto;
+  padding-left: 1em;
+  display: flex;
+  gap: 1ch;
+  font-size: 0.8rem;
+  color: rgba(237, 231, 217, 0.5);
+  cursor: pointer;
+}
+.information-section .word-information-wrapper .word-definition {
+  width: 100%;
+  height: 100%;
+  padding: 0.5em;
+  background-color: #1b1b1b;
+  border-radius: 5px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.playing-section {
+  width: 100%;
+  height: auto;
+  padding: 2em;
+  background-color: #272727;
+  border: 1px solid rgba(96, 96, 96, 0.3);
+  border-radius: 15px;
+  color: #ede7d9;
+}
+
+.checkbox-container {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 2px solid #ede7d9;
+  font-size: 0.8rem;
+}
+.checkbox-container input {
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  opacity: 0;
+}
+.checkbox-container .checkmark {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.checkbox-container .checkmark::after {
+  content: "";
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background-color: #ede7d9;
+  transform: scale(0);
+  transition: 0.1s ease;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  transform: scale(1);
+}/*# sourceMappingURL=styles.css.map */
