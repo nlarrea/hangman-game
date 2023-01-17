@@ -91,7 +91,107 @@ header {
 .information-section {
     @include mainSections();
 
-    
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    gap: 1em;
+
+    .hangman-img-wrapper {
+        width: 100%;
+        max-height: 100%;
+
+        padding: 0.5em;
+
+        display: grid;
+        place-content: center;
+
+        .hangman-img {
+            display: grid;
+            grid-template-columns: 70px 50px 70px;
+            grid-template-rows: 50px 70px 70px;
+            place-content: center;
+            row-gap: 10px;
+
+            div {
+                width: 100%;
+                height: 20px;
+
+                background-color: colors.$second-medium;
+                border-radius: 10px;
+            }
+
+            #hangman-head {
+                border-radius: 50%;
+                @include positionElements($column: 2, $row: 1);
+            }
+
+            #hangman-left-arm {
+                @include positionElements($column: 1, $row: 2);
+                height: 20px;
+            }
+
+            #hangman-body {
+                @include positionElements($column: 2, $row: 2);
+                width: 20px;
+                margin: 0 auto;
+            }
+
+            #hangman-right-arm {
+                @include positionElements($column: 3, $row: 2);
+                height: 20px;
+            }
+
+            #hangman-left-leg {
+                @include positionElements($column: 1, $row: 3);
+                width: 20px;
+                margin: 0 0 0 auto;
+            }
+
+            #hangman-right-leg {
+                @include positionElements($column: 3, $row: 3);
+                width: 20px;
+                margin: 0 auto 0 0;
+            }
+        }
+    }
+
+    .word-information-wrapper {
+        width: 100%;
+        height: 100%;
+
+        padding: 0.5em;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        
+        .enable-help-wrapper {
+            width: 100%;
+            height: auto;
+            
+            padding-left: 1em;
+
+            display: flex;
+            gap: 1ch;
+            
+            font-size: 0.8rem;
+            color: rgba($color: colors.$main-light, $alpha: 0.5);
+
+            cursor: pointer;
+        }
+        
+        .word-definition {
+            width: 100%;
+            height: 100%;
+
+            padding: 0.5em;
+
+            background-color: colors.$second-dark;
+            border-radius: 5px;
+            
+            overflow: hidden;
+            overflow-y: auto;
+        }
+    }
 }
 
 .playing-section {
