@@ -207,7 +207,11 @@ header h1 {
   display: none;
 }
 .playing-section .controls {
-  display: block;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 .playing-section .player-input-wrapper {
   display: none;
@@ -300,4 +304,42 @@ header h1 {
   transform: scale(1);
 }
 
-/* START-GAME BUTTON *//*# sourceMappingURL=styles.css.map */
+/* START-GAME BUTTON */
+#start-game {
+  width: 60%;
+  height: auto;
+  padding: 1em;
+  cursor: pointer;
+  font-weight: 700;
+  color: #ede7d9;
+  background-color: #606060;
+  border-radius: 5px;
+  border: none;
+  border-bottom: 3px solid #1b1b1b;
+}
+#start-game span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#start-game span:after {
+  content: " >>";
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  line-height: inherit;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#start-game:hover span, #start-game:focus span {
+  padding-right: 3ch;
+}
+#start-game:hover span:after, #start-game:focus span:after {
+  opacity: 1;
+}
+#start-game:active {
+  background-color: #1b1b1b;
+  border-bottom: 3px solid #606060;
+}/*# sourceMappingURL=styles.css.map */
