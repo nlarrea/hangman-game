@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <span>Welcome to:</span>
+                <h1> Hangman Game</h1>
+            </div>
+        </header>
+
+        <section class="game-container">
+            <div class="information-section">   <!-- enunciado -->
+                <div class="hangman-img-wrapper">
+                    <div class="hangman-img">
+                        <div id="hangman-head"></div>
+                        <div id="hangman-left-arm"></div>
+                        <div id="hangman-body"></div>
+                        <div id="hangman-right-arm"></div>
+                        <div id="hangman-left-leg"></div>
+                        <div id="hangman-right-leg"></div>
+                    </div>
+                </div>
+
+                <div class="word-information-wrapper">
+                    <div class="enable-help-wrapper">
+                        <label class="checkbox-container" for="enable-help-check">
+                            <input type="checkbox" name="enable-help" id="enable-help-check" checked>
+                            <div class="checkmark"></div>
+                        </label>
+                        <label for="enable-help-check">Do you want to see information about the word? </label>
+                    </div>
+
+                    <div class="word-definition enable">This is going to tell you something to make it easier!</div>
+                </div>
+            </div>
+            
+            <div class="playing-section">       <!-- respuesta del jugador -->
+                <div class="guess-word">Will you guess the word?</div>
+
+                <div class="player-input-wrapper">
+                    <label for="player-input">Enter a letter:</label>
+                    <input type="text" id="player-input" placeholder="Example: a">
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>
