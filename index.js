@@ -26,7 +26,8 @@ async function hangmanGame(){
     const word = await getData("https://random-word-api.herokuapp.com/word");
     console.log(word);
     
-    // const definitionPromise = getData();
+    const wordInfo = await getData(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+    console.log(wordInfo)
 }
 
 btnStart.addEventListener("click", () => {
@@ -36,5 +37,5 @@ btnStart.addEventListener("click", () => {
 
 btnBack.addEventListener("click", () => {
     togglePlayingState();
-    // remove game data
+    // remove game data -> del()?
 })
