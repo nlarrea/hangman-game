@@ -13,12 +13,18 @@ function togglePlayingState(){
 
 function getData(url){
     return fetch(url)
-    .then(response => response.json());
+    .then(response => response.json(), e => {
+        console.error(e);
+        throw e;
+    })
+    .catch(() => {
+        alert("Sorry, something went wrong...");
+    })
 }
 
-function hangmanGame(){
-    const wordPromise = getData("https://random-word-api.herokuapp.com/word");
-    console.log(wordPromise.then());
+async function hangmanGame(){
+    const word = await getData("https://random-word-api.herokuapp.com/word");
+    console.log(word);
     
     // const definitionPromise = getData();
 }
