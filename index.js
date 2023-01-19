@@ -3,9 +3,14 @@
 
 const btnStart = document.querySelector("#start-game");
 const btnBack = document.querySelector("#back-game");
+
 const playingState = document.querySelectorAll(".not-playing");
 const checkbox = document.querySelector("#enable-help-check");
+
 const wordDisplay = document.querySelector(".word-definition");
+const unknownDisplay = document.querySelector(".display-word-wrapper");
+
+const playerInput = document.querySelector("#player-input");    // no me lo detecta ?¿ no modifica su valor
 
 
 function togglePlayingState(){
@@ -47,15 +52,19 @@ function getData(url, definition){
 
 async function hangmanGame(){
     // returns a list with 2 words
-    const words = await getData("https://random-words5.p.rapidapi.com/getMultipleRandom?count=2", false);
+    const words = await getData("https://random-words5.p.rapidapi.com/getMultipleRandom?count=1", false);
     console.log(words);
     
-    // send the first word of the list 'words'
-    const wordInfo = await getData(`https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=${words[0]}`, true);
-    console.log(wordInfo);
-
+    // display word info if requested and a messege if it's not
     if(checkbox.checked){
-        wordDisplay.textContent = wordInfo.definition;
+        // send the first word of the list 'words'
+        const wordInfo = await getData(`https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=${words}`, true);
+        console.log(wordInfo);
+
+        let wordDef = wordInfo.definition.split(" 2. ");
+        wordDef = wordDef[0];
+        
+        wordDisplay.textContent = wordDef;
     } else{
         wordDisplay.textContent = "";
         wordDisplay.innerHTML = `<p>You have decided to play without help...</p>
@@ -73,4 +82,5 @@ btnBack.addEventListener("click", () => {
     togglePlayingState();
     // remove game data
     wordDisplay.textContent = "This is going to tell you something to make it easier!";
+    unknownDisplay.textContent = "";
 })
