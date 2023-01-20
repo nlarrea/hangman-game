@@ -12,7 +12,6 @@ const unknownDisplay = document.querySelector(".display-word-wrapper");
 
 const playerInput = document.querySelector("#player-input");    // no me lo detecta ?¿ no modifica su valor
 
-
 function togglePlayingState(){
     playingState.forEach(element => {
         element.classList.toggle("not-playing");
@@ -61,17 +60,60 @@ async function hangmanGame(){
         const wordInfo = await getData(`https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=${words}`, true);
         console.log(wordInfo);
 
-        let wordDef = wordInfo.definition.split(" 2. ");
-        wordDef = wordDef[0];
-        
-        wordDisplay.textContent = wordDef;
+        if(wordInfo.definition !== ""){
+            let wordDef = wordInfo.definition.split(" 2. ");
+            wordDef = wordDef[0];
+            
+            wordDisplay.textContent = wordDef;
+        } else{
+            wordDisplay.textContent = "Sorry, definition not found!";
+        }
     } else{
         wordDisplay.textContent = "";
         wordDisplay.innerHTML = `<p>You have decided to play without help...</p>
         <p>¡GOOD LUCK!</p>`;
     }
+
+    gameSequence(words[0]);
 }
 
+function gameSequence(word){
+    // initialize game
+    let unknown = [];
+    for(let i=0; i<word.length; i++){
+        unknown[i] = "_";
+    }
+    unknownDisplay.textContent = unknown.join(" ");
+    
+    playerInput.addEventListener("keypress", event => {
+        if(event.key === "Enter"){
+            let wordLength = unknown.filter(char => char === "_").length;
+            
+            console.log(wordLength);
+            console.log(unknown);
+            const inputData = playerInput.value;
+            playerInput.value = "";
+            if(inputData.length > 1){
+                alert("Please, enter just one letter.");
+            } else{
+                for(let j=0; j < unknown.length; j++){
+                    // if char is already setted, don't take in count
+                    if(inputData === unknown[j]) continue;
+                    else if(inputData === word[j]){
+                        unknown[j] = inputData;
+                        wordLength--;
+                    }
+                    
+                    unknownDisplay.textContent = unknown.join(" ");
+                }
+            }
+        }
+        if(unknown.filter(char => char === "_").length === 0){
+            alert("CONGRATULATIONS!\n\nYOU HAVE WIN!");
+        }
+    })
+    
+}
 
 btnStart.addEventListener("click", () => {
     togglePlayingState();
@@ -83,4 +125,5 @@ btnBack.addEventListener("click", () => {
     // remove game data
     wordDisplay.textContent = "This is going to tell you something to make it easier!";
     unknownDisplay.textContent = "";
+    location.reload();
 })
