@@ -130,7 +130,26 @@
                 input {
                     width: 40%;
                 }
+
+                label {
+                    font-size: 0.8rem;
+                }
             }
+        }
+    }
+}
+
+@media (max-width: 400px){
+    header {
+        padding: 0.5em;
+    }
+
+    .game-container {
+        padding: 0;
+        padding-bottom: 1em;
+
+        .information-section {
+            padding: 1em;
         }
     }
 }
