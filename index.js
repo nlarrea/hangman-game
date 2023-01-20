@@ -4,13 +4,16 @@
 const btnStart = document.querySelector("#start-game");
 const btnBack = document.querySelector("#back-game");
 
+const hangmanBody = document.querySelectorAll(".hangman-body-part");
+
 const playingState = document.querySelectorAll(".not-playing");
 const checkbox = document.querySelector("#enable-help-check");
 
 const wordDisplay = document.querySelector(".word-definition");
 const unknownDisplay = document.querySelector(".display-word-wrapper");
 
-const playerInput = document.querySelector("#player-input");    // no me lo detecta ?¿ no modifica su valor
+const playerInput = document.querySelector("#player-input");
+const inputWrapper = document.querySelector(".player-input-wrapper");
 
 function togglePlayingState(){
     playingState.forEach(element => {
@@ -19,6 +22,12 @@ function togglePlayingState(){
     })
 }
 
+function updateBody(counter){
+    console.log(counter);
+    for(let i=0; i<counter; i++){
+        hangmanBody[i].style.backgroundColor = "red";
+    }
+}
 
 function getData(url, definition){
     if(!definition){
@@ -84,35 +93,53 @@ function gameSequence(word){
         unknown[i] = "_";
     }
     unknownDisplay.textContent = unknown.join(" ");
+    let wordLength = unknown.filter(char => char === "_").length;
+
+    let counter = 0, appears = false;
     
     playerInput.addEventListener("keypress", event => {
         if(event.key === "Enter"){
-            let wordLength = unknown.filter(char => char === "_").length;
             
             console.log(wordLength);
             console.log(unknown);
-            const inputData = playerInput.value;
+            const inputData = playerInput.value.toLowerCase();
             playerInput.value = "";
             if(inputData.length > 1){
                 alert("Please, enter just one letter.");
             } else{
+                appears = false;
+
                 for(let j=0; j < unknown.length; j++){
                     // if char is already setted, don't take in count
-                    if(inputData === unknown[j]) continue;
-                    else if(inputData === word[j]){
+                    if(inputData === unknown[j]){
+                        appears = true;
+                        continue;
+                    } else if(inputData === word[j]){
+                        appears = true;
                         unknown[j] = inputData;
                         wordLength--;
                     }
-                    
-                    unknownDisplay.textContent = unknown.join(" ");
+
+                }
+
+                if(!appears){
+                    counter++;
+                    updateBody(counter);
+                    if(counter === 6){
+                        alert("Ohh..\n..better luck next time!")
+                        stopPlaying();
+                    }
                 }
             }
         }
-        if(unknown.filter(char => char === "_").length === 0){
-            alert("CONGRATULATIONS!\n\nYOU HAVE WIN!");
+
+        unknownDisplay.textContent = unknown.join(" ");
+
+        if(wordLength === 0){
+            inputWrapper.style.visibility = "hidden";
+            alert("CONGRATULATIONS!\n\nYOU HAVE WON!");
         }
     })
-    
 }
 
 btnStart.addEventListener("click", () => {
@@ -120,10 +147,14 @@ btnStart.addEventListener("click", () => {
     hangmanGame();
 });
 
-btnBack.addEventListener("click", () => {
+function stopPlaying(){
     togglePlayingState();
     // remove game data
     wordDisplay.textContent = "This is going to tell you something to make it easier!";
     unknownDisplay.textContent = "";
     location.reload();
+}
+
+btnBack.addEventListener("click", () => {
+    stopPlaying();
 })
