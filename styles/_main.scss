@@ -91,7 +91,7 @@ header {
     flex: auto; // it is a flex element
 
     display: grid; // it is also a grid container
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 2em;
 }
 
@@ -188,12 +188,12 @@ header {
         }
 
         .enable-help-wrapper.playing {
-            visibility: hidden;
+            display: none;
         }
         
         .word-definition {
             width: 100%;
-            max-height: 95px;
+            max-height: 110px;
 
             padding: 0.5em;
 
@@ -282,7 +282,7 @@ header {
             position: relative;
     
             input {
-                width: 30%;
+                width: 40%;
                 height: auto;
 
                 padding: 1rem 1.5rem;

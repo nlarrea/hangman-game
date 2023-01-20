@@ -1,0 +1,110 @@
+@use "colors";
+
+@media (max-width: 1024px) {
+    body {
+        min-height: auto;
+    }
+
+    .container {
+        width: calc(100vw - 20px);
+        height: 100vh;
+
+        border-radius: 0;
+    }
+
+    .playing-section > .playing-pannel > .player-input-wrapper.playing {
+        input {
+            width: 60%;
+        }
+    }
+}
+
+@mixin positionHangman($bg-color: colors.$second-medium, $img-link, $column){
+    width: 30px;
+    height: 30px;
+    grid-column: $column;
+    grid-row: 1;
+    background-color: $bg-color;
+    -webkit-mask-image: url("./../images/icons/#{$img-link}");
+    mask-image: url("./../images/icons/#{$img-link}");
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        width: calc(100vw - 20px);
+
+        padding: 0 1em 1em;
+
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+
+        font-size: 0.8rem;
+    
+        .information-section {
+            height: 200px;
+
+            .hangman-img-wrapper {
+                width: 100%;
+                height: 100%;
+                order: 2;
+
+                .hangman-img {
+                    width: 100%;
+                    height: 100%;
+
+                    display: grid;
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-template-rows: 1fr;
+                    row-gap: 0;
+                    column-gap: 10px;
+
+                    #hangman-head {
+                        @include positionHangman($img-link: "face-smile-solid.svg", $column: 1);
+                    }
+
+                    #hangman-left-arm {
+                        @include positionHangman($img-link: "face-smile-wink-solid.svg", $column: 2);
+                    }
+                    
+                    #hangman-body {
+                        @include positionHangman($img-link: "face-meh-solid.svg", $column: 3);
+                    }
+                    
+                    #hangman-right-arm {
+                        @include positionHangman($img-link: "face-meh-blank-solid.svg", $column: 4);
+                    }
+                    
+                    #hangman-left-leg {
+                        @include positionHangman($img-link: "face-surprise-solid.svg", $column: 5);
+                    }
+                    
+                    #hangman-right-leg {
+                        @include positionHangman($img-link: "face-frown-solid.svg", $column: 6)
+                    }
+                }
+            }
+
+            .word-information-wrapper {
+                order: 1;
+
+                .word-definition {
+                    height: 90px;
+                    max-height: 90px;
+                    
+                }
+            }
+        }
+
+        .playing-section {
+            height: 300px;
+            padding: 1.2em;
+
+            .playing-pannel > .player-input-wrapper.playing {
+                input {
+                    width: 40%;
+                }
+            }
+        }
+    }
+}
