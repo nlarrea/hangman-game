@@ -23,7 +23,6 @@ function togglePlayingState(){
 }
 
 function updateBody(counter){
-    console.log(counter);
     for(let i=0; i<counter; i++){
         hangmanBody[i].style.backgroundColor = "red";
     }
@@ -61,13 +60,13 @@ function getData(url, definition){
 async function hangmanGame(){
     // returns a list with 2 words
     const words = await getData("https://random-words5.p.rapidapi.com/getMultipleRandom?count=1", false);
-    console.log(words);
+    //console.log(words);
     
     // display word info if requested and a messege if it's not
     if(checkbox.checked){
         // send the first word of the list 'words'
         const wordInfo = await getData(`https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=${words}`, true);
-        console.log(wordInfo);
+        //console.log(wordInfo);
 
         if(wordInfo.definition !== ""){
             let wordDef = wordInfo.definition.split(" 2. ");
@@ -100,8 +99,6 @@ function gameSequence(word){
     playerInput.addEventListener("keypress", event => {
         if(event.key === "Enter"){
             
-            console.log(wordLength);
-            console.log(unknown);
             const inputData = playerInput.value.toLowerCase();
             playerInput.value = "";
             if(inputData.length > 1){
