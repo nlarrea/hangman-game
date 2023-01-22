@@ -534,8 +534,12 @@ header h1 {
     padding: 2em;
     flex: auto;
   }
+  .game-container .playing-section .guess-word > h3.playing {
+    display: none;
+  }
   .game-container .playing-section .guess-word > h3 {
     font-size: 1.2rem;
+    display: block;
   }
   .game-container .playing-section .playing-pannel > .player-input-wrapper.playing input {
     width: 40%;

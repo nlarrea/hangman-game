@@ -123,8 +123,13 @@
             padding: 2em;
             flex: auto;
 
+            .guess-word > h3.playing {
+                display: none;
+            }
+
             .guess-word > h3 {
                 font-size: 1.2rem;
+                display: block;
             }
 
             .playing-pannel > .player-input-wrapper.playing {

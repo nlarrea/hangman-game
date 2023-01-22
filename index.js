@@ -135,3 +135,8 @@ function stopPlaying(){
 btnBack.addEventListener("click", () => {
     stopPlaying();
 })
+
+unknownDisplay.addEventListener("click", event => {
+    event.preventDefault();
+    document.querySelector("#player-input").focus();
+})
