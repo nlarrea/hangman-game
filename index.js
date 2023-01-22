@@ -28,61 +28,40 @@ function updateBody(counter){
     }
 }
 
-function getData(url, definition){
-    if(!definition){
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': 'de1b853a38msh48611b58d95aa51p1b2f15jsn3328164b2b9e',
-                'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
-            }
-        };
-        
-        return fetch(url, options)
-            .then(response => response.json())
-            .catch(err => console.error(err));
-    } else{
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': 'de1b853a38msh48611b58d95aa51p1b2f15jsn3328164b2b9e',
-                'X-RapidAPI-Host': 'dictionary-by-api-ninjas.p.rapidapi.com'
-            }
-        };
-        
-        return fetch(url, options)
-            .then(response => response.json())
-            .catch(err => console.error(err));
-    }
+function getData(url){
+    return fetch(url)
+        .then(response => response.json())
+        .catch(err => console.error(err));
 }
 
-
 async function hangmanGame(){
-    // returns a list with 2 words
-    const words = await getData("https://random-words5.p.rapidapi.com/getMultipleRandom?count=1", false);
-    //console.log(words);
+    const takeRandom = (num) => {
+        return Math.floor(Math.random()*num);
+    }
+
+    const getKeyByValue = (obj, value) => {
+        return Object.keys(obj).find(key => obj[key] === value);
+    }
+
+    const wordsObj = await getData("./dictionary_alpha_arrays.json");
     
+    const randChar = takeRandom(26);
+    const randWord = takeRandom(Object.keys(randChar).length);
+
+    const definition = wordsObj[randChar][Object.keys(wordsObj[randChar])[randWord]];
+    const word = getKeyByValue(wordsObj[randChar], definition);
+    //console.log(`${word}: ${definition}`);
+
     // display word info if requested and a messege if it's not
     if(checkbox.checked){
-        // send the first word of the list 'words'
-        const wordInfo = await getData(`https://dictionary-by-api-ninjas.p.rapidapi.com/v1/dictionary?word=${words}`, true);
-        //console.log(wordInfo);
-
-        if(wordInfo.definition !== ""){
-            let wordDef = wordInfo.definition.split(" 2. ");
-            wordDef = wordDef[0];
-            
-            wordDisplay.textContent = wordDef;
-        } else{
-            wordDisplay.textContent = "Sorry, definition not found!";
-        }
+        wordDisplay.textContent = definition;
     } else{
         wordDisplay.textContent = "";
         wordDisplay.innerHTML = `<p>You have decided to play without help...</p>
         <p>¡GOOD LUCK!</p>`;
     }
 
-    gameSequence(words[0]);
+    gameSequence(word);
 }
 
 function gameSequence(word){
