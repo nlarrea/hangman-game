@@ -33,20 +33,16 @@ function getData(url){
 
 async function hangmanGame(){
     const takeRandom = (num) => {
-        return Math.floor(Math.random()*num);
-    }
-
-    const getKeyByValue = (obj, value) => {
-        return Object.keys(obj).find(key => obj[key] === value);
+        return Math.floor(Math.random() * num);
     }
 
     const wordsObj = await getData("./dictionary_alpha_arrays.json");
 
-    const randChar = takeRandom(wordsObj.length);
-    const randWord = takeRandom(Object.keys(randChar).length);
+    let randChar = takeRandom(wordsObj.length);
+    let randWord = takeRandom(Object.keys(randChar).length);
     
-    const word = Object.keys(wordsObj[randChar])[randWord];
-    const definition = wordsObj[randChar][word];
+    let word = Object.keys(wordsObj[randChar])[randWord];
+    let definition = wordsObj[randChar][word];
     // console.log(`${word}: ${definition}`);
 
     // display word info if requested and a messege if it's not
