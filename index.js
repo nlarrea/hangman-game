@@ -1,6 +1,3 @@
-// https://rapidapi.com/sheharyar566/api/random-words5/                 -> obtener la palabra para enviársela a la otra API
-// https://rapidapi.com/apininjas/api/dictionary-by-api-ninjas/         -> obtener definicion de una palabra concreta
-
 const btnStart = document.querySelector("#start-game");
 const btnBack = document.querySelector("#back-game");
 
@@ -44,13 +41,13 @@ async function hangmanGame(){
     }
 
     const wordsObj = await getData("./dictionary_alpha_arrays.json");
-    
-    const randChar = takeRandom(26);
-    const randWord = takeRandom(Object.keys(randChar).length);
 
-    const definition = wordsObj[randChar][Object.keys(wordsObj[randChar])[randWord]];
-    const word = getKeyByValue(wordsObj[randChar], definition);
-    //console.log(`${word}: ${definition}`);
+    const randChar = takeRandom(wordsObj.length);
+    const randWord = takeRandom(Object.keys(randChar).length);
+    
+    const word = Object.keys(wordsObj[randChar])[randWord];
+    const definition = wordsObj[randChar][word];
+    // console.log(`${word}: ${definition}`);
 
     // display word info if requested and a messege if it's not
     if(checkbox.checked){
@@ -77,9 +74,9 @@ function gameSequence(word){
     
     playerInput.addEventListener("keypress", event => {
         if(event.key === "Enter"){
-            
             const inputData = playerInput.value.toLowerCase();
             playerInput.value = "";
+            
             if(inputData.length > 1){
                 alert("Please, enter just one letter.");
             } else{
@@ -102,8 +99,14 @@ function gameSequence(word){
                     counter++;
                     updateBody(counter);
                     if(counter === 6){
-                        alert("Ohh..\n..better luck next time!")
-                        stopPlaying();
+                        for(let k=0; k<unknown.length; k++){
+                            unknown[k] = word[k];
+                        }
+                        unknownDisplay.textContent = unknown.join(" ");
+                        setTimeout(() => {
+                            alert("Ohh..\n..better luck next time!");
+                            stopPlaying();
+                        }, 2000);
                     }
                 }
             }
@@ -113,7 +116,9 @@ function gameSequence(word){
 
         if(wordLength === 0){
             inputWrapper.style.visibility = "hidden";
-            alert("CONGRATULATIONS!\n\nYOU HAVE WON!");
+            setTimeout(() => {
+                alert("CONGRATULATIONS!\n\nYOU HAVE WON!");
+            }, 1000);
         }
     })
 }
