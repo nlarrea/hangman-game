@@ -440,7 +440,7 @@ header h1 {
   }
   .game-container .information-section {
     min-height: 40%;
-    height: 40%;
+    height: 50%;
     flex: initial;
   }
   .game-container .information-section .hangman-img-wrapper {
@@ -520,6 +520,7 @@ header h1 {
   }
   .game-container .information-section .word-information-wrapper {
     order: 1;
+    gap: 0;
   }
   .game-container .information-section .word-information-wrapper .enable-help-check {
     flex: initial;
@@ -527,7 +528,7 @@ header h1 {
   .game-container .information-section .word-information-wrapper .word-definition {
     height: 100%;
     flex: auto;
-    max-height: 80%;
+    max-height: 90%;
   }
   .game-container .playing-section {
     padding: 2em;
@@ -553,5 +554,14 @@ header h1 {
   }
   .game-container .information-section {
     padding: 1em;
+  }
+  .game-container .playing-section > .guess-word > h3.playing {
+    display: none;
+  }
+  .game-container .playing-section > .guess-word > h3 {
+    display: block;
+  }
+  .game-container .playing-section > .playing-pannel > .player-input-wrapper.playing input {
+    width: 60%;
   }
 }/*# sourceMappingURL=styles.css.map */

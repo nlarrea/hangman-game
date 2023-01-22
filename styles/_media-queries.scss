@@ -58,7 +58,7 @@
     
         .information-section {
             min-height: 40%;
-            height: 40%;
+            height: 50%;
             flex: initial;
 
             .hangman-img-wrapper {
@@ -104,6 +104,7 @@
 
             .word-information-wrapper {
                 order: 1;
+                gap: 0;
 
                 .enable-help-check {
                     flex: initial;
@@ -112,7 +113,7 @@
                 .word-definition {
                     height: 100%;
                     flex: auto;
-                    max-height: 80%;
+                    max-height: 90%;
                     
                 }
             }
@@ -150,6 +151,20 @@
 
         .information-section {
             padding: 1em;
+        }
+
+        .playing-section > .guess-word > h3.playing {
+            display: none;
+        }
+
+        .playing-section > .guess-word > h3 {
+            display: block;
+        }
+
+        .playing-section > .playing-pannel > .player-input-wrapper.playing {
+            input {
+                width: 60%;
+            }
         }
     }
 }
