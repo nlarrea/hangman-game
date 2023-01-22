@@ -134,7 +134,7 @@
 
             .playing-pannel > .player-input-wrapper.playing {
                 input {
-                    width: 40%;
+                    width: 60%;
                 }
 
                 label {
@@ -164,12 +164,6 @@
 
         .playing-section > .guess-word > h3 {
             display: block;
-        }
-
-        .playing-section > .playing-pannel > .player-input-wrapper.playing {
-            input {
-                width: 60%;
-            }
         }
     }
 }

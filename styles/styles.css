@@ -186,7 +186,7 @@ header h1 {
 .playing-section .guess-word {
   width: 100%;
   height: 50%;
-  flex: 2;
+  flex-basis: initial;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,7 +212,7 @@ header h1 {
   width: 100%;
   height: 100%;
   padding: 1em;
-  flex: 1;
+  flex-basis: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -542,7 +542,7 @@ header h1 {
     display: block;
   }
   .game-container .playing-section .playing-pannel > .player-input-wrapper.playing input {
-    width: 40%;
+    width: 60%;
   }
   .game-container .playing-section .playing-pannel > .player-input-wrapper.playing label {
     font-size: 0.8rem;
@@ -564,8 +564,5 @@ header h1 {
   }
   .game-container .playing-section > .guess-word > h3 {
     display: block;
-  }
-  .game-container .playing-section > .playing-pannel > .player-input-wrapper.playing input {
-    width: 60%;
   }
 }/*# sourceMappingURL=styles.css.map */
