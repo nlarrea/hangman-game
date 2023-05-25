@@ -292,7 +292,6 @@ header h1 {
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   border: 2px solid #ede7d9;
   font-size: 0.8rem;
